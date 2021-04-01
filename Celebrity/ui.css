@@ -138,6 +138,7 @@ button {
 }
 
 .user-list {
+    padding: 0 0.7em;
     height: 6.3em;
     margin-top: 0.05em;
     display: flex;
