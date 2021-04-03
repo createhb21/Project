@@ -217,7 +217,7 @@ li {
     display: flex;
     flex-flow: row wrap;
     width: 80vw;
-    height: 250px;
+    height: 10em;
     margin: 0 auto;
     align-items: center;
 }
@@ -241,8 +241,8 @@ li {
 .secondary-image .pretty {
     display: none;
     margin: 10px auto;
-    width: 125px;
-    height: 240px;
+    width: 90%;
+    height: 18em;
     border: 1px solid rgba(255, 255, 255, 0.616);
     border-radius: 5%;
     background-color: rgba(255, 255, 255, 0.212);
