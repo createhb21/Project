@@ -1,5 +1,5 @@
 'use strict';
-// Object-oriendted programming
+// Object-oriendted programming  객체 지향 프로그래밍
 // class: template
 // object: instance of a class
 // JavaScript classes
@@ -8,15 +8,12 @@
 
 // 1. Class declarations
 class Person {
-  // constructor => 생성자를 이용해서 나중에 Object를 만들 때 필요한 data를 전달.
-  constructor(name, age) {
-    // fields
-    this.name = name;
-    this.age = age;
+  constructor(name, age) {  // constructor => 생성자를 이용해서 나중에 Object를 만들 때 필요한 data를 전달.
+    this.name = name;   // fields
+    this.age = age;   // fields
   }
 
-  // methods
-  speak() {
+  speak() {  // methods
     console.log(`${this.name}: hello!`);
   }
 }
@@ -25,11 +22,11 @@ const ellie = new Person('ellie', 20);
 // ellie = { 
 //   name: "ellie",
 //   age: 20,
-// };
+// };   //  ?
 
-console.log(ellie.name);
-console.log(ellie.age);
-ellie.speak();
+console.log(ellie.name);  // ellie
+console.log(ellie.age);  // 20
+ellie.speak();  // ellie: hello!
 
 // 2. Getter and setters
 class User {
@@ -40,19 +37,19 @@ class User {
   }
 
   get age() {
-    return this._age;
+    return this._age;   // _age를 쑬 수 있는건 특별한 getter와 setter 때문임.
   }
 
   set age(value) {
     // if (value < 0) {
     //   throw Error('age can not be negative');
     // }
-    this._age = value < 0 ? 0 : value;
+    this._age = value < 0 ? 0 : value;  // _age를 쑬 수 있는건 특별한 getter와 setter 때문임.
   }
 }
 
 const user1 = new User('Steve', 'Job', -1);
-console.log(user1.age);
+console.log(user1.age);  // 0
 
 // 3. Fields (public, private)
 // Too soon!
@@ -62,8 +59,8 @@ class Experiment {
   #privateField = 0;
 }
 const experiment = new Experiment();
-console.log(experiment.publicField);
-console.log(experiment.privateField);
+console.log(experiment.publicField);    // 2
+console.log(experiment.privateField);   // undeefined
 
 // 4. Static properties and methods
 // Too soon!
@@ -80,8 +77,9 @@ class Article {
 
 const article1 = new Article(1);
 const article2 = new Article(2);
-console.log(Article.publisher);
-Article.printPublisher();
+console.log(article1.publisher);  // undefined
+console.log(Article.publisher);    // Dream Coding
+Article.printPublisher();    //   Dream Coding
 
 // 5. Inheritance
 // a way for one class to extend another class.
@@ -118,23 +116,30 @@ class Triangle extends Shape {
 }
 
 const rectangle = new Rectangle(20, 20, 'blue');
-rectangle.draw();
-console.log(rectangle.getArea());
+rectangle.draw();  // drawing blue color! 
+console.log(rectangle.getArea());  // 400
 const triangle = new Triangle(20, 20, 'red');
-triangle.draw();
-console.log(triangle.getArea());
+triangle.draw();  // drawing red color!
+console.log(triangle.getArea());  // 200
 
-// 6. Class checking: instanceOf
+// 6. Class checking: instanceOf  // 이 class를 이용해서 만들어진 아이인지 아닌지 확인할 수 있음.
 console.log(rectangle instanceof Rectangle);  // true
 console.log(triangle instanceof Rectangle);   // false
 console.log(triangle instanceof Triangle);   // ture
 console.log(triangle instanceof Shape);   // true
 console.log(triangle instanceof Object);  // true
-console.log(triangle.toString());
+console.log(triangle.toString()); // Triangle: color: red
 
 let obj = { value: 5 };
 function change(value) {
   value.value = 7;
 }
 change(obj);
-console.log(obj);
+console.log(obj); // { value: 7}
+
+let obj = { value: 5 };
+function change(value) {
+  value.value = 7;
+}
+// change(obj);
+console.log(obj); // { value: 5}

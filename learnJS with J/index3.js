@@ -424,7 +424,7 @@ setTimeout(() => {
 
 
 
-// 51. Decorators 
+/* 51. Decorators 
 //1
 // Functional programming
 function slow(x) {  // identity function
@@ -497,3 +497,36 @@ console.log( "Again: " + slowFn(2) ); // the same as the previous line
 // console.log(worker.slow(2)); // Whoops! Error: Cannot read property 'someMethod' of undefined
 // console.log(worker.slow(2)); 
 //*/
+
+
+//* Methods 
+// field or property == key + value
+let student1 = {
+  name: "superman", // primitive types: string, number, boolean, symbol, null, undefined
+  study: {
+    field: "Javascript",
+    year: 3
+  },  // Object
+
+  // Method
+  action: function(num) {
+    return num + 3;
+  }  // function object 
+}
+
+console.log(student1.action(5));  // 8
+
+// Function Expression
+let myFn = function(num) {
+  return num + 3;
+} // function object
+
+// Function Declaration
+function myFn2(num) {
+  return num + 3;
+}  // function object
+
+let JU = "jupeter".toUpperCase();  // primitive type(중 "jupeter"은 string)도 method를 가진다는 거.
+console.log(JU);  // JUPETER
+let num = 1.23455566.toFixed(2);  // number도 method를 가진다는 것..
+console.log(num);  // 1.23
