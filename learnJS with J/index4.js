@@ -608,6 +608,13 @@ console.log(c);  // [
 //                   [ 'address', 'Seoguipo Jungmun' ],
 //                   [ 'hourlyPaymentInUSD', 17 ]
 //                  ]
+for ( let kry of Object.keys(superman)) {
+  console.log(k)   //
+}
+
+for (const key of Object.values(superman)) {
+  console.log(k)   // 
+}
 
 // object가 만들어지고 난 후에 구현 가능한 methods.. 
 // 그래서 컴퓨터가 처리하는 속도가 빠르지 x
@@ -626,8 +633,8 @@ console.log(c);  // [
 
 
 const m = new Map();
-m.set(`color`, `red`); // [[`color, `red]]
-m.set(`age`, 2);  // [[`color, `red], [`age`, 2]]
+m.set(`color`, `red`); // [[`color`, `red`]]
+m.set(`age`, 2);  // [[`color, `red`], [`age`, 2]]
 console.log(m); // Map(2) { 'color' => 'red', 'age' => 2 } == [Array[2], Array[2]]
 
 // map이라는 것은 Object에 비슷한데, Array에 훨씬 더 가깝다는 것...  사실상 Array 형태란 말이에요..? 
@@ -648,6 +655,12 @@ console.log(m.get(`age`));   // 2
 // m.set(`age`, 2);
 
 // console.log(m);  // Map(2) { 'color' => 'red', 'age' => 2 }
+// 0: {"color" => "red"}
+//   key: "color"
+//   value: "red"
+//1: {"age" => 2}
+//   key: "age"
+//   value: 2
 
 // console.log(m.get(`color`)); // red
 // console.log(m.get(`age`));  // 2
@@ -690,31 +703,180 @@ for (const [k, v] of m) {
 // Map이라고 하는 것은 Object를 좀 더 array에 가깝게 구성하는 datatype. 그래서 대용량의, 용량이 큰 것들이 많을 때 Object에 비해서 Map으로 처리하는게 훨씬 더 컴퓨터 자원을 적게 소모하며 처리할 수 있다. 한마디로 연산속도가 훨씬 더 빠르다.  
 */
 
-//* 90 - Map - Spread
+/* 90 - Map - Spread
 const m = new Map([[`color`, `red`], [`owner`, `Flavio`], [`age`, 2]])
 // Map은 key, value/ key, value 로 구성되고있음.
 
-// console.log(m); // Map(3) { 'color' => 'red', 'owner' => 'Flavio', 'age' => 2 }
+console.log(m); // Map(3) { 'color' => 'red', 'owner' => 'Flavio', 'age' => 2 }
 
-// for (const k of m.keys()) {
-//   console.log(k)   // color, owner, age
+만약에 Map의 key들만 뽑아보고 싶다면 ?
+const a = m.keys();
+console.log(a); // {}   이건 아님
+
+const a = [m.keys()];
+console.log(a);  //  [ [Map Iterator] { 'color', 'owner', 'age' } ]   이것도 아님
+
+const a = [...m.keys()];   // Spread Operator
+console.log(a);   // [ 'color', 'owner', 'age' ] 이거네!!
+
+const b = [...m.values()];   // Spread Operator
+console.log(b);   // [ 'red', 'Flavio', 2 ]  
+
+const c = [...m.entries()];   // Spread Operator
+console.log(c);  // [ [ 'color', 'red' ], [ 'owner', 'Flavio' ], [ 'age', 2 ] ]
+*/
+
+
+/* 91 - Set 기초
+// Set    기본적으로 Map과 대동소이. 하나정도가 다름.
+let animals = new Set();   
+
+animals.add('🐷');
+animals.add('🐼');
+animals.add('🐢');
+animals.add('🐿');
+console.log(animals.size); // 4
+animals.add('🐼');
+console.log(animals.size); // 4  이게 Map과 Set의 차이
+// Map은 그냥 추가하면 추가되지만은 Set은 반복되는 item은 자동적으로 취소(삭제)함.   
+
+console.log(animals.has('🐷')); // true
+animals.delete('🐷');
+console.log(animals.has('🐷')); // false
+
+
+animals.forEach(animal => {
+  console.log(`Hey ${animal}!`);
+});
+// Hey 🐼!
+// Hey 🐢!
+// Hey 🐿!
+
+console.log(animals); // Set {} ==> Set이라는 것은 알 수 있지만, 그 안에 무엇이 들었는지는 알 수 x, 그래서 안에 무엇이 들어있는지 확인하려면 forEach를 하던가 혹은 다른 명령을 줘야한다.  
+
+animals.clear();
+console.log(animals.size); // 0
+
+let myAnimals = new Set(['🐷', '🐢', '🐷', '🐷']);
+
+console.log(myAnimals.size); // 2
+
+
+myAnimals.add(['🐨', '🐑']);
+// myAnimals.add('🐨', '🐑');  // 요런 식으로는 코딩하지 말라는 겁니당. + 두개 다 안나오고 앞에 아이만 나옴.
+myAnimals.add({ name: 'Rud', type: '🐢' }); // // 요런 식으로는 코딩하지 말라는 겁니당
+console.log(myAnimals.size); // 4  동작은 하네용
+
+myAnimals.forEach(animal => {
+  console.log(animal);
+});
+// 🐷
+// 🐢
+// ["🐨", "🐑"]    // Aarray 자체가 통째로 들어감
+// Object { name: "Rud", type: "🐢" }  // Object 자체가 통째로 들어감
+
+// 요런 식으로는 코딩하지 말라는 겁니당 ==> 이유: Set을 만들때에는 element들이 하나로 같은 종류여야 해용 '돼지'랑 '거북이'는 하나의 동물인데 3번째거는 하나의 array고 네번째는 하나의 object자나용, 이렇게 서로 다른 종류를 섞어서 Set을 구성하면 말라는 겁니당. 동작은 하는데 그런식으로 코딩하는 것은 바람직하지 않다는 겁니당.
+//*/
+
+
+/* 92. Set methods
+console.log('Only unique characters will be in this set.'.length); // 43
+
+let sentence = new Set('Only unique characters will be in this set.');
+console.log(sentence.size); // 18  반복되는 character들은 다 삭제한다는 거죵
+
+let moreAnimals = new Set(['🐺', '🐴', '🐕', '🐇']);
+// iterable(item을 하나씩 셀 수 있다) == a kind of array
+for (let animal of moreAnimals) {
+  console.log(`Howdy ${ animal }`);
+}
+// Howdy 🐺
+// Howdy 🐴
+// Howdy 🐕
+// Howdy 🐇
+
+// iterable한 data type의 특징 = next()
+let partyItems = new Set(['🍕', '🍾', '🎊']);
+
+console.log(partyItems);  // Set(3) {"🍕", "🍾", "🎊"}
+
+// let items = partyItems.values();
+// console.log(items.next());  // {value: "🍕", done: false}
+// console.log(items.next());  // {value: "🍾", done: false}
+// console.log(items.next());  // {value: "🎊", done: false}
+// console.log(items.next());  // {value: undefined, done: true}
+// console.log(items.next().done);  // true
+
+
+let keys = partyItems.keys();
+console.log(keys.next());  // {value: "🍕", done: false}
+console.log(keys.next());  // {value: "🍾", done: false}
+console.log(keys.next());  // {value: "🎊", done: false}
+console.log(keys.next());  // {value: undefined, done: true}
+console.log(keys.next().done);  // true
+// next라고 하는 것은 항상 key를 보여주는 것이 아니라 item(value)만을 보여준다.
+
+// Object {
+//   done: false,
+//   value: "🍕"
 // }
 
-// for (const k of m.values()) {
-//   console.log(k)   // red, Flavio, 2
+// Object {
+//   done: false,
+//   value: "🍾"
 // }
 
-// for (const [k, v] of m.entries()) {
-//   console.log(k, v);   // color red, owner Flavio, age 2
+// Object {
+//   done: false,
+//   value: "🎊"
 // }
 
-// for (const [k, v] of m) {
-//   console.log(k, v);   // color red, owner Flavio, age 2
-// }
+// true
 
-// const a = m.keys();
-// console.log(a); // {}
+// donne: false 는 다 아직 안둘러봤다는 뜻, 다 둘러봤으면 true.
+*/
 
-// const a = [m.keys()];
-// console.log(a);  //  [ [Map Iterator] { 'color', 'owner', 'age' } ]
+/* 93. next() method = array, map, set
+var set1 = new Set(); 
+  
+// adding element to the set 
+set1.add(50); // value without key  // Map은 key+value였지만, Set같은 경우 value만 줄 수 있음
+set1.add(40); 
+set1.add(30); 
+set1.add(20); 
+set1.add(10); 
 
+console.log(set1);  // Set(5) {50, 30, 40, 20, 10}
+  
+// using entries to get iterator 
+var getEntriesArry = set1.entries(); 
+var getKeysArry = set1.keys(); 
+var getValuesArry = set1.values(); 
+// each iterator is array of [value, value] 
+// prints [50, 50] 
+console.log(getEntriesArry.next());  // {value: Array(2), done: false}  // 자동적으로 key와 value를 만듬
+console.log(getEntriesArry.next().value); 
+
+// prints [40, 40] 
+console.log(getEntriesArry.next().value); 
+  
+// prints [30, 30] 
+console.log(getEntriesArry.next().value);  
+  
+// prints [20, 20] 
+console.log(getEntriesArry.next().value); 
+
+// prints [10, 10] 
+console.log(getEntriesArry.next().value); 
+
+// prints nothing 
+console.log(getEntriesArry.next().value); // undefined
+console.log(getEntriesArry.next()); // {value: undefined, done: true}
+
+// next라고 하는 function은 주로 어떤 Set이든 혹은 Map이든 혹은 Array이든 각각의 아이템들을 불러오는, 그니까 어떤 집합속에 있는 원소들을 하나씩 하나씩 차례차례 순서대로 불러오는 역할을 함.
+// 불러오는 순서는 들어가있는 순서.
+// nest를 한번 호출하고 나면 자동으로 그 다음 단계로 넘어감.  그냥 console.log(getEntriesArry.next());를 하던가  console.log(getEntriesArry.next().value); 하던가 상관없이 한번 호출되었으면은 그 다음 단계로 넘어간단 말이죵.
+
+// !!! 우리는 하나의 item(value)를 넣었지만은 Set은 반드시 key + value 형식으로 저장을 한다는 것.그래서 add(50)을 하더라도 [50, 50] 이런 식으로 쓰인다는 거에요, 그래서 key를 뽑더라도 50, 40, 30, 20, 10 이 나오고 value를 뽑더라도 50, 40, 30, 20, 10이 나온다는 것. 
+
+//*/

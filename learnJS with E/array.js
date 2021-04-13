@@ -20,15 +20,15 @@ console.clear();
 // a. for
 for (let i = 0; i < fruits.length; i++) {
   console.log(fruits[i]);
-}
+}  // 🍎, 🍌
 
 // b. for of
 for (let fruit of fruits) {
   console.log(fruit);
-}
+}  // 🍎, 🍌
 
 // c. forEach
-fruits.forEach((fruit) => console.log(fruit));
+fruits.forEach((fruit) => console.log(fruit));  // 🍎, 🍌
 
 // 4. Addtion, deletion, copy
 // push: add an item to the end

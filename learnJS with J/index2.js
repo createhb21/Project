@@ -776,13 +776,13 @@
       // learn();
 
       superman[`learn`] = study; // superman에 learn이라고 하는 property에 study라는 function을 담겠다. ===> 어울림
-      superman['learn']();  // 위에처럼 해준 다음, 호출
+      superman['learn']();  // 위에처럼 해준 다음, 호출   // I am Superman, I study Javascript basic with Team Jupeter.
       // // superman.learn();   // 이렇게 하지 마세요. 외부의 function을 가져오는건지 원래 정의되있는 function인건지 구분이 안된다. 따로 구분을 시켜 줄 필요성이 있다.
 
       // superman.skill();
 
       birdman[`learn`] = study;  
-      birdman['learn'](); // 위에처럼 해준 다음, 호출
+      birdman['learn'](); // 위에처럼 해준 다음, 호출   // I am Birdman, I study Javascript basic with Team Jupeter.
       // birdman.learn();  이렇게 하지 마세요. 왜냐하면 learn()이 birdman 오브젝트의 기존 property로 오해될 수 있다.
       // birdman.skill();
       // */
