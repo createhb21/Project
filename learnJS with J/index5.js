@@ -52,7 +52,7 @@ for(let key of getKeys) {
 //*/
 
 /* 95. set, array and forEach 
-var set1 = new Set(); 
+let set1 = new Set(); 
   
 // adding element to the set 
 set1.add({Firstname: "Sumit", Lastname: "Ghosh"}); 
@@ -79,9 +79,9 @@ set1.forEach(printOne);  // {Firstname: "Sumit", Lastname: "Ghosh"}, 50, 30, 40,
 // Declaring a call back function 
 // we are using two parameter value 
 // so it will ignore last one  
-function printOne(values) 
+function printTwo(key, values) 
 { 
-    console.log(values); 
+    console.log(key+" "+values); 
 } 
   
 // As key and values are same in set 
@@ -260,7 +260,7 @@ function say(time, phrase) {
   console.log(`[${time}] ${this.name}: ${phrase}`);
 }
 
-let user = { name: "John" };
+let user = { name: "John" };    // Object
 
 let messageData = ['10:00', 'Hello']; // become time and phrase
 
@@ -283,7 +283,7 @@ say.apply(user, messageData); // [10:00] John: Hello (this=user) 똑같은 효�
 
 // 2
 
-// let args = [1, 2, 3];
+// let args = [1, 2, 3];   // Array
 
 // func.call(context, ...args); // pass an array as list with spread operator
 // func.apply(context, args);   // is same as using apply

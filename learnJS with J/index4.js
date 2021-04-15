@@ -49,7 +49,7 @@ let heroes = [`superman`, `batman`, `x-man`];
 heroes.push('aquaman');  // 오른쪽 끝에 element를 추가하는 것.
 console.log(heroes); // [ 'superman', 'batman', 'x-man', 'aquaman' ]
 
-let shiftedHero = heroes.shift();  // 인쪽 끝에 element를 빼는 것
+let shiftedHero = heroes.shift();  // 안쪽 끝에 element를 빼는 것
 console.log(heroes); // [ 'batman', 'x-man', 'aquaman' ]
 console.log(shiftedHero);  // superman
 
@@ -69,7 +69,7 @@ let myObj = {
 
 // console.log(heroes.length);  // array   3
 // console.log(myName.length);  // string    7
-// console.log(myObj.legnth);  // Object는 length를 적용할 수 없다.  
+// console.log(myObj.legnth);  // undefined // Object는 length를 적용할 수 없다.  
 // length가 있다는 것은 element간에 순서(서열, 순위= index)가 있다는 것인데, Object는 element 간에 순서가 없다. 그냥 다 똑같은, 평등한 property라는 것임.  
 
 for (let key in myObj) {
@@ -239,16 +239,16 @@ let heroes = [
 ]
 // console.log(
 //   heroes.indexOf(superman)
-// );  
+// );     // 0
 // console.log(
 //   heroes.indexOf(batman)
-// );  
+// );  // 1
 // console.log(
 //   heroes.indexOf(ironman)
-// );  
+// );  // 2
 // console.log(
 //   heroes.indexOf(birdman)
-// );  
+// );  // -1
 
 // let foundHero = heroes.find(item => item.address == `Busan`);
 // // console.log(foundHero); // { name: 'Superman',
@@ -309,7 +309,6 @@ let heroes = [
 
 let highIncomeHeroes = heroes.filter(item => item.hourlyPayment >= 14);
 console.log(highIncomeHeroes); 
-console.log(highIncomeHeroes.length);  // 2  
 // [
 //   {
 //     name: 'Ironman',
@@ -324,6 +323,8 @@ console.log(highIncomeHeroes.length);  // 2
 //     address: 'Jejudo'
 //   }
 // ]
+
+console.log(highIncomeHeroes.length);  // 2  
 
 let firstHeroName = highIncomeHeroes[0].name;
 let secondHeroName = highIncomeHeroes[1].name;
@@ -376,6 +377,10 @@ console.log(highIncomeHeroes);
 
 let names = highIncomeHeroes.map(item => item.name);
 console.log(names);  // [ 'Ironman', 'Birdman' ]
+
+
+console.log(highIncomeHeroes);
+console.log(highIncomeHeroes.length);
 */
 
 
@@ -522,7 +527,7 @@ function compare(a, b) {
 }
 
 let sorted3 = myList1.sort(compare);
-console.log(sorted3);  // [1, 2,  3,  5, 8, 10, 15, 23, 45]
+console.log(sorted3);  // [1, 2, 3, 5, 8, 10, 15, 23, 45]
 // 우리가 원했던 순서대로 정렬이 되었다.
 */
 
@@ -608,12 +613,12 @@ console.log(c);  // [
 //                   [ 'address', 'Seoguipo Jungmun' ],
 //                   [ 'hourlyPaymentInUSD', 17 ]
 //                  ]
-for ( let kry of Object.keys(superman)) {
-  console.log(k)   //
+for ( let key of Object.keys(superman)) {
+  console.log(key)   // name, age, address, hourlyPaymentInUSD
 }
 
 for (const key of Object.values(superman)) {
-  console.log(k)   // 
+  console.log(key)   //  Superman, 25, Seoguipo Jungmun, 17 
 }
 
 // object가 만들어지고 난 후에 구현 가능한 methods.. 
@@ -837,7 +842,7 @@ console.log(keys.next().done);  // true
 */
 
 /* 93. next() method = array, map, set
-var set1 = new Set(); 
+let set1 = new Set(); 
   
 // adding element to the set 
 set1.add(50); // value without key  // Map은 key+value였지만, Set같은 경우 value만 줄 수 있음
@@ -849,9 +854,9 @@ set1.add(10);
 console.log(set1);  // Set(5) {50, 30, 40, 20, 10}
   
 // using entries to get iterator 
-var getEntriesArry = set1.entries(); 
-var getKeysArry = set1.keys(); 
-var getValuesArry = set1.values(); 
+let getEntriesArry = set1.entries(); 
+let getKeysArry = set1.keys(); 
+let getValuesArry = set1.values(); 
 // each iterator is array of [value, value] 
 // prints [50, 50] 
 console.log(getEntriesArry.next());  // {value: Array(2), done: false}  // 자동적으로 key와 value를 만듬
@@ -874,8 +879,8 @@ console.log(getEntriesArry.next().value); // undefined
 console.log(getEntriesArry.next()); // {value: undefined, done: true}
 
 // next라고 하는 function은 주로 어떤 Set이든 혹은 Map이든 혹은 Array이든 각각의 아이템들을 불러오는, 그니까 어떤 집합속에 있는 원소들을 하나씩 하나씩 차례차례 순서대로 불러오는 역할을 함.
-// 불러오는 순서는 들어가있는 순서.
-// nest를 한번 호출하고 나면 자동으로 그 다음 단계로 넘어감.  그냥 console.log(getEntriesArry.next());를 하던가  console.log(getEntriesArry.next().value); 하던가 상관없이 한번 호출되었으면은 그 다음 단계로 넘어간단 말이죵.
+// 불러오는 순서는 들어가 있는 순서.
+// next를 한번 호출하고 나면 자동으로 그 다음 단계로 넘어감.  그냥 console.log(getEntriesArry.next());를 하던가  console.log(getEntriesArry.next().value); 하던가 상관없이 한번 호출되었으면은 그 다음 단계로 넘어간단 말이죵.
 
 // !!! 우리는 하나의 item(value)를 넣었지만은 Set은 반드시 key + value 형식으로 저장을 한다는 것.그래서 add(50)을 하더라도 [50, 50] 이런 식으로 쓰인다는 거에요, 그래서 key를 뽑더라도 50, 40, 30, 20, 10 이 나오고 value를 뽑더라도 50, 40, 30, 20, 10이 나온다는 것. 
 

@@ -10,13 +10,19 @@ function Hero(name, age = 30) {
 // new  ==> new를 써서 Object를 만들 수 있음. superman, wolverine은 주어가 되어서 뒤에 동사를 호출할 수 있는 것. 기억해야할 약속 -> first letter을 대문자로...
 let superman = new Hero(`Superman`, 25); 
 let wolverine = new Hero(`Wolverine`);
+let wolverine = {
+  name: 'antman',
+  age: 30,
+  skill = function() {
+    return `I always win`
+}
 let antman = new Hero(`antman`, 30);
 let xman = new Hero(`xman`, 40);
 let drStrange = new Hero(`Dr. Strange`, 50);
 
-console.log(superman.age);
-console.log(wolverine.age);
-console.log(wolverine.skill());
+console.log(superman.age);    // 25
+console.log(wolverine.age);    // 30
+console.log(wolverine.skill());   // I always win
 
 // Object literal   ==> 하나만 만들 떄 
 let birdman = {
@@ -66,7 +72,8 @@ console.log(hero2);    // Xman
 let [hero1] = heroes;
 console.log(hero1);    // Superman
 
-let [ ,hero2] = heroes;   // 첫번째 element는 건너뛰고 두번째 element에 넣겠다. 하지만 이런 게 가능하다는 거지, 굳이 사용할 필요는 x. let hero1 = heroes[0] 이 훨씬 편함.
+let [ ,hero2] = heroes;   // 첫번째 element는 건너뛰고 두번째 element에 넣겠다. 하지만 이런 게 가능하다는 거지, 굳이 사용할 필요는 x. 
+let hero1 = heroes[0] 이 훨씬 편함.
 console.log(hero2);    // Xman
 
 
@@ -88,24 +95,24 @@ let heroes = [`Superman`, `Xman`, `Birdman`, `Catgirl`, `Wondergirl`];
 
 let [hero1, hero2, ...otherHeroes] = heroes;
 
-console.log(hero1);
-console.log(hero2);
-console.log(otherHeroes);
-console.log(otherHeroes[0]);
-console.log(otherHeroes[2]);
+console.log(hero1); // Superman
+console.log(hero2); // Batman
+console.log(otherHeroes); // [ 'Birdman', 'Catgirl', 'Wondergirl' ]
+console.log(otherHeroes[0]);  // Birdman
+console.log(otherHeroes[2]);  // Wondergirl
 
 let [hero1, hero2, ...rest] = heroes;
 
-console.log(hero1);
-console.log(hero2);
-console.log(rest);
-console.log(rest[0]);
-console.log(rest[2]);
+console.log(hero1);  // Superman
+console.log(hero2);  // Batman
+console.log(rest);  // [ 'Birdman', 'Catgirl', 'Wondergirl' ]
+console.log(rest[0]);  // Birdman
+console.log(rest[2]); // Wondergirl
 
 let [hero1, hero2, hero3, hero4, hero5, hero6 = `Jupeter`] = heroes;  // default value
 
-console.log(hero6);
-console.log(hero2);
+console.log(hero6);   // Jupeter
+console.log(hero2);  // Xman
 
 let [hero1, hero2, hero3, hero4, hero5, hero6 = prompt(`What is the name of a new hero?`)] = heroes;  // default value
 
@@ -136,30 +143,30 @@ console.log(c);  // 2
 
 let {name1, job, address} = superman;
 
-console.log(name1);
-console.log(job);
-console.log(address);
+console.log(name1);  // Superman
+console.log(job);   // Hero
+console.log(address);  // Gangnam Samsung Remian
 
 //in the case of object destructuring, the name of variables are very important.
 let {name1, address, job} = superman;
 
-console.log(name1);
-console.log(job);
-console.log(address);
+console.log(name1);  // Superman
+console.log(job);   // Hero
+console.log(address);  // Gangnam Samsung Remian
 
 let {name1, job, address, tel = `01012277777`} = superman;
 
-console.log(name1);
-console.log(job);
-console.log(address);
-console.log(tel);
+console.log(name1);  // Superman
+console.log(job);  // Hero
+console.log(address);  // Gangnam Samsung Remian
+console.log(tel); // 01012277777
 
 let {name1: n, job: j, address: a, tel = prompt(`What is your(superman) tel number`)} = superman;
 
-console.log(n);
-console.log(j);
-console.log(a);
-console.log(tel);
+console.log(n); // Superman
+console.log(j);  // Hero
+console.log(a); // Gangnam Samsung Remian
+console.log(tel);  // 01030482379
 //*/
 
 /* 44. JSON 기초
@@ -181,6 +188,14 @@ let text = `{ "employees" : [
 // JSON object, parse() method
 let obj = JSON.parse(text);  // JSON Text를 Javascript의 Object로 만들어낸다.
 // console.log(obj)   // {employees: Array[3]} 정확하게 javascript의 object가 나옴.
+// {
+//  employees: [
+//    { firstName: 'John', lastName: 'Doe' },
+//    { firstName: 'Anna', lastName: 'Smith' },
+//    { firstName: 'Peter', lastName: 'Jones' }
+//  ]
+// }
+
 // employess 라는 key를 가지고 있고, value로는 Array를 3개 가지고 있음. 
 // 0: Object
 // 1: Object
@@ -300,10 +315,26 @@ console.log(otherParams2);       //  [ 'birdman', Array[3]] ==  [ 'birdman', [ '
 
 // console.log(result); // f()
 // console.log(result()); //  Hi, I am Superman  => heroName을 실행한 결과를 다시 실행하라는 말.
-// console.log(heroName()()); //  Hi, I am Superman // 실행한 결과가 나옴.
+// console.log(result()); == console.log(heroName()()); //  Hi, I am Superman // 실행한 결과가 나옴.
 
 
 // 3 Scope
+//function heroName(firstName, lastName) {
+//  // helper nested function to use below
+//  function getFullName() {
+//    
+//    return firstName + " " + lastName;
+//  }
+//
+//  console.log( "Hello, " + getFullName() );
+//  console.log( "Bye, " + getFullName() );
+//
+// }
+//
+// heroName(`Kim`, `Superman`); // Hello,Kim Superman
+//                                  Bye, Kim Superman
+//
+//
 // function heroName(firstName, lastName) {
 //   // helper nested function to use below
 //   function getFullName() {
@@ -317,7 +348,8 @@ console.log(otherParams2);       //  [ 'birdman', Array[3]] ==  [ 'birdman', [ '
 
 // }
 
-// heroName(`Kim`, `Superman`);
+// heroName(`Kim`, `Superman`);  // Hello, Park Batman
+//                                  Bye, Park Batman
 
 // 4  Independent Scope
 // function makeCounter() {
@@ -361,10 +393,9 @@ console.log(otherParams2);       //  [ 'birdman', Array[3]] ==  [ 'birdman', [ '
 // let counter1 = makeCounter();
 // let counter2 = makeCounter();
 
-// console.log( counter1() ); 
-// console.log( counter1() ); 
-
-// console.log( counter2() ); 
+// console.log( counter1() );  // 0
+// console.log( counter1() );   // 1
+// console.log( counter2() );  // 0
 
 // 6
 // [[Environment]]
@@ -385,11 +416,11 @@ function sayHi(phrase, who) {
 }
 
 sayHi("Hello", "John");
-setTimeout(sayHi, 1000, "Hello", "John"); 
+setTimeout(sayHi, 1000, "Hello", "John");  // Hello, John 1초 delay
 
 
 //3
-setTimeout(() => console.log('Hello'));
+setTimeout(() => console.log('Hello')); 바로 Hello
 setTimeout(() => console.log('Hello'), 1000);
 setTimeout(() => console.log('Hello'), 2000);
 
@@ -491,7 +522,7 @@ console.log( "Again: " + slowFn(2) ); // the same as the previous line
 //   }; 
 // }
 
-// console.log(worker.slow(1)); // the original method works
+// console.log(worker.slow(1)); // the original method works // Called with 1, 3
 
 // worker.slow = cachingDecorator(worker.slow);
 // console.log(worker.slow(2)); // Whoops! Error: Cannot read property 'someMethod' of undefined
@@ -499,7 +530,7 @@ console.log( "Again: " + slowFn(2) ); // the same as the previous line
 //*/
 
 
-//* Methods 
+/* Methods 
 // field or property == key + value
 let student1 = {
   name: "superman", // primitive types: string, number, boolean, symbol, null, undefined
@@ -530,3 +561,4 @@ let JU = "jupeter".toUpperCase();  // primitive type(중 "jupeter"은 string)도
 console.log(JU);  // JUPETER
 let num = 1.23455566.toFixed(2);  // number도 method를 가진다는 것..
 console.log(num);  // 1.23
+*/

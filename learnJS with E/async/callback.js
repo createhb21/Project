@@ -30,7 +30,7 @@ class UserStorage {
         onSuccess(id);
       } else {
         onError(new Error('not found'));
-      }
+      } 
     }, 2000);
   }
 

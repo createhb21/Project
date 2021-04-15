@@ -312,7 +312,7 @@
       let myVar3 = 3;    // Number Value
       let myVar = "Jupeter";  // String Value
       
-      myVar1(5);    // myVar은 볼 수 있지만, = 오른쪽에 있는 function은 볼 수가 없다.
+      myVar1(5);    // myVar은 볼 수 있지만, = 오른쪽에 있는 function은 볼 수가 없다. myFn(5);는 잘못된 것.
       console.log(myVar1(5));  // 25
       
       function myFn1() {
