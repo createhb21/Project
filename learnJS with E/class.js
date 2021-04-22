@@ -1,7 +1,7 @@
 'use strict';
 // Object-oriendted programming  객체 지향 프로그래밍
 // class: template
-// object: instance of a class
+// object: instance of a class   // instance => 기계로부터 생성되는 object들
 // JavaScript classes
 //  - introduced in ES6
 //  - syntactical sugar over prototype-based inheritance
@@ -26,7 +26,7 @@ const ellie = new Person('ellie', 20);
 
 console.log(ellie.name);  // ellie
 console.log(ellie.age);  // 20
-ellie.speak();  // ellie: hello!
+ellie.speak();  // ellie: hello!  (함수 심행)
 
 // 2. Getter and setters
 class User {
@@ -101,9 +101,10 @@ class Shape {
 
 // extends   == shape에 있는 모든 field와 mothod들이 Rectangle에 포함되게 된다.
 class Rectangle extends Shape {} 
+// overwriting
 class Triangle extends Shape {
   draw() {
-    super.draw(); // 부모의 drow도 잊지 안호 호출해주는 기능!
+    super.draw(); // 부모의 method도 잊지 않고 호출해주는 기능! => super
     console.log('🔺');
   }
   getArea() {
@@ -125,7 +126,7 @@ console.log(triangle.getArea());  // 200
 // 6. Class checking: instanceOf  // 이 class를 이용해서 만들어진 아이인지 아닌지 확인할 수 있음.
 console.log(rectangle instanceof Rectangle);  // true
 console.log(triangle instanceof Rectangle);   // false
-console.log(triangle instanceof Triangle);   // ture
+console.log(triangle instanceof Triangle);   // true
 console.log(triangle instanceof Shape);   // true
 console.log(triangle instanceof Object);  // true
 console.log(triangle.toString()); // Triangle: color: red
