@@ -85,7 +85,7 @@
     let d = 1 + 2; // 3
     console.log(d)
 
-    let e = '6' / 2; // 잘못된 연산이지만 자동으로 문자를 숫자로 바꿔줌. but 잘몬된 것임. 실제 동작하더라도 이러헤 사용x. *도 마찬가지.
+    let e = '6' / 2; // 잘못된 연산이지만 자동으로 문자를 숫자로 바꿔줌. but 잘몬된 것임. 실제 동작하더라도 이렇게 사용x. *도 마찬가지.
     console.log(e)
     */
 
@@ -313,7 +313,8 @@
       console.log(0 || null || undefined); // undefined 
 
       true == true, false == false
-      false value === 0, null, undefined, true value === 그 외의 모든 데이터(숫자, 문자, ....)
+      false value === 0, null, undefined 
+      true value === 그 외의 모든 데이터(숫자, 문자, ....)
 
       &&의 Priority가 ||보다 높다. 따라서 and 부터 먼저 하고 그 다음에 or을 하게 된다.
       console.log(1 || 2 && 3); // 1

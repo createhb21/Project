@@ -10,12 +10,12 @@ function Hero(name, age = 30) {
 // new  ==> new를 써서 Object를 만들 수 있음. superman, wolverine은 주어가 되어서 뒤에 동사를 호출할 수 있는 것. 기억해야할 약속 -> first letter을 대문자로...
 let superman = new Hero(`Superman`, 25); 
 let wolverine = new Hero(`Wolverine`);
-let wolverine = {
-  name: 'antman',
-  age: 30,
-  skill = function() {
-    return `I always win`
-}
+// let wolverine = {
+//   name: 'antman',
+//   age: 30,
+//   skill = function() {
+//     return `I always win`
+// }
 let antman = new Hero(`antman`, 30);
 let xman = new Hero(`xman`, 40);
 let drStrange = new Hero(`Dr. Strange`, 50);
@@ -96,7 +96,7 @@ let heroes = [`Superman`, `Xman`, `Birdman`, `Catgirl`, `Wondergirl`];
 let [hero1, hero2, ...otherHeroes] = heroes;
 
 console.log(hero1); // Superman
-console.log(hero2); // Batman
+console.log(hero2); // Xman
 console.log(otherHeroes); // [ 'Birdman', 'Catgirl', 'Wondergirl' ]
 console.log(otherHeroes[0]);  // Birdman
 console.log(otherHeroes[2]);  // Wondergirl
@@ -104,7 +104,7 @@ console.log(otherHeroes[2]);  // Wondergirl
 let [hero1, hero2, ...rest] = heroes;
 
 console.log(hero1);  // Superman
-console.log(hero2);  // Batman
+console.log(hero2);  // Xman
 console.log(rest);  // [ 'Birdman', 'Catgirl', 'Wondergirl' ]
 console.log(rest[0]);  // Birdman
 console.log(rest[2]); // Wondergirl
@@ -274,6 +274,7 @@ let text = `{ "employees" : [
 let [c, ...m] = [1, 2, 3, 4, 5];
 console.log(c);   // 1
 console.log(m);  // [ 2, 3, 4, 5 ]
+console.log(...m);  // 2 3 4 5
 
 // Javascript <== Haskell <== Lisp 
 
@@ -286,119 +287,118 @@ console.log(otherParams2);       //  [ 'birdman', Array[3]] ==  [ 'birdman', [ '
 
 
 /* 47. Closure
-// 1
-// let heroName = "Superman";
+1
+let heroName = "Superman";
 
-// // Function Declaration
-// function sayHi() {
-//   console.log("Hi, " + heroName);
-// }
+// Function Declaration
+function sayHi() {
+  console.log("Hi, " + heroName);
+}
 
-// heroName = "Batman";
+heroName = "Batman";
 
-// sayHi(); // Superman or Batman? // Hi, Batman
+sayHi(); // Superman or Batman? // Hi, Batman
 
-// 2
-// Lexical Scope
-// function heroName() {
-//   let name2 = "Superman";
+2
+Lexical Scope
+function heroName() {
+  let name2 = "Superman";
 
-//   return function() { 
-//     // 여기서 name2를 찾아본다. 
-//     console.log(`Hi, I am ${name2}`);
-//   }; 
-// }
+  return function() { 
+    // 여기서 name2를 찾아본다. 
+    console.log(`Hi, I am ${name2}`);
+  }; 
+}
 
-// let name2 = "Batman";
+let name2 = "Batman";
 
-// let result = heroName(); // f()
+let result = heroName(); // f()
 
-// console.log(result); // f()
-// console.log(result()); //  Hi, I am Superman  => heroName을 실행한 결과를 다시 실행하라는 말.
-// console.log(result()); == console.log(heroName()()); //  Hi, I am Superman // 실행한 결과가 나옴.
+console.log(result); // f()
+console.log(result()); //  Hi, I am Superman  => heroName을 실행한 결과를 다시 실행하라는 말.
+console.log(result()); == console.log(heroName()()); //  Hi, I am Superman // 실행한 결과가 나옴.
 
 
-// 3 Scope
-//function heroName(firstName, lastName) {
-//  // helper nested function to use below
-//  function getFullName() {
-//    
-//    return firstName + " " + lastName;
-//  }
-//
-//  console.log( "Hello, " + getFullName() );
-//  console.log( "Bye, " + getFullName() );
-//
-// }
-//
-// heroName(`Kim`, `Superman`); // Hello,Kim Superman
-//                                  Bye, Kim Superman
-//
-//
-// function heroName(firstName, lastName) {
-//   // helper nested function to use below
-//   function getFullName() {
-//     // let firstName = `Park`;
-//     let lastName = 'Batman';
-//     return firstName + " " + lastName;
-//   }
+3 Scope
+function heroName(firstName, lastName) {
+ // helper nested function to use below
+ function getFullName() {
+   return firstName + " " + lastName;
+ }
 
-//   console.log( "Hello, " + getFullName() );
-//   console.log( "Bye, " + getFullName() );
+ console.log( "Hello, " + getFullName() );
+ console.log( "Bye, " + getFullName() );
 
-// }
+}
 
-// heroName(`Kim`, `Superman`);  // Hello, Park Batman
-//                                  Bye, Park Batman
+heroName(`Kim`, `Superman`); // Hello,Kim Superman
+//                              Bye, Kim Superman
 
-// 4  Independent Scope
-// function makeCounter() {
-//   let count = 0;
 
-//   return function() {
-//     // let count = 1;
-//     return count++; // has access to the outer counter
-//   };
-// }
+function heroName(firstName, lastName) {
+  // helper nested function to use below
+  function getFullName() {
+    // let firstName = `Park`;
+    let lastName = 'Batman';
+    return firstName + " " + lastName;
+  }
 
-// // let counter1 = makeCounter();
+  console.log( "Hello, " + getFullName() );
+  console.log( "Bye, " + getFullName() );
 
-// // console.log( counter1() ); // 0, count => 1 
-// // console.log( counter1() ); // 1, count => 2
-// // console.log( counter1() ); // 2, count => 3
+}
 
-// // let counter2 = makeCounter();
-// // console.log( counter2() ); // 3? or 0?    -> 0 
-// // console.log( counter2() ); //  1
-// // console.log( counter2() ); //  2
+heroName(`Kim`, `Superman`);  // Hello, Park Batman
+//                               Bye, Park Batman
 
-// console.log( makeCounter()() ); // 0
-// console.log( makeCounter()() ); // 0
-// console.log( makeCounter()() ); // 0
-// console.log( makeCounter()() ); // 0
-// console.log( makeCounter()() ); // 0
+4  Independent Scope
+function makeCounter() {
+  let count = 0;
 
-// QUIZ: reset the counter from the code that doesn’t belong to makeCounter.
-
-// QUIZ: If we call makeCounter() multiple times, do they share the same count?
-
-// 5 
-// function makeCounter() {
-//   let count = 0;
-//   return function() {
-//     return count++;
-//   };
-// }
+  return function() {
+    // let count = 1;
+    return count++; // has access to the outer counter
+  };
+}
 
 // let counter1 = makeCounter();
+
+// console.log( counter1() ); // 0, count => 1 
+// console.log( counter1() ); // 1, count => 2
+// console.log( counter1() ); // 2, count => 3
+
 // let counter2 = makeCounter();
+// console.log( counter2() ); // 3? or 0?    -> 0 
+// console.log( counter2() ); //  1
+// console.log( counter2() ); //  2
 
-// console.log( counter1() );  // 0
-// console.log( counter1() );   // 1
-// console.log( counter2() );  // 0
+console.log( makeCounter()() ); // 0
+console.log( makeCounter()() ); // 0
+console.log( makeCounter()() ); // 0
+console.log( makeCounter()() ); // 0
+console.log( makeCounter()() ); // 0
 
-// 6
-// [[Environment]]
+QUIZ: reset the counter from the code that doesn’t belong to makeCounter.
+
+QUIZ: If we call makeCounter() multiple times, do they share the same count?
+
+5 
+function makeCounter() {
+  let count = 0;
+  return function() {
+    return count++;
+  };
+}
+
+let counter1 = makeCounter();
+let counter2 = makeCounter();
+
+console.log( counter1() );  // 0
+console.log( counter1() );   // 1
+console.log( counter2() );  // 0
+
+6
+[[Environment]]
 */
 
 /* 50. Scheduling: setTimeout and setInterval
@@ -420,7 +420,7 @@ setTimeout(sayHi, 1000, "Hello", "John");  // Hello, John 1초 delay
 
 
 //3
-setTimeout(() => console.log('Hello')); 바로 Hello
+setTimeout(() => console.log('Hello')); // 바로 Hello
 setTimeout(() => console.log('Hello'), 1000);
 setTimeout(() => console.log('Hello'), 2000);
 

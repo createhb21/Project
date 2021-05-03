@@ -1,5 +1,5 @@
 /* 94. has(), for of loop
-
+    
 let set1 = new Set(); 
   
 // adding element to the set 
@@ -7,10 +7,10 @@ set1.add(50);
 set1.add(30); 
               
 // prints true 
-console.log(set1.has(50)); 
+console.log(set1.has(50)); // true
   
 // prints false 
-console.log(set1.has(10)); 
+console.log(set1.has(10)); // false
 
 //*/
 
@@ -75,7 +75,7 @@ function printOne(values)
 // forEach는 array를 위한 method. == set이 곧 array. 
 set1.forEach(printOne);  // {Firstname: "Sumit", Lastname: "Ghosh"}, 50, 30, 40, Geeks, GFG
 
-//* 
+
 // Declaring a call back function 
 // we are using two parameter value 
 // so it will ignore last one  
@@ -89,13 +89,13 @@ function printTwo(key, values)
 set1.forEach(printTwo); // [object Object]  [object Object], 50  50, 30  30, 40  40, Geeks  Geeks, GFG  GFG
 
 
-// const a = [2, 3, 4, 5];  // 눈에 보이지않는 key가 들어가 있음 .
+const a = [2, 3, 4, 5];  // 눈에 보이지않는 key가 들어가 있음 .
 // 0 1 2 3 순으로 key가 할당된다.
 // Set은 value 자체가 바로 key로 동일하게 할당된다
 // 그니까 Set에서는 Object도 key가 될 수 있고 number도 key가 될 수있고 string도 key가 될 수 있다는 거죵 
 
-// a.forEach(printOne);  // 2, 3, 4, 5
-// a.forEach(printTwo); // 0 2, 1 3, 2 4, 3 5
+a.forEach(printOne);  // 2, 3, 4, 5
+a.forEach(printTwo); // 0 2, 1 3, 2 4, 3 5
 */
 
 /* 96. Decorators and forwarding, call/apply
@@ -214,7 +214,7 @@ function say(phrase) {
 let user = { name: "John" };
 
 // // user becomes this, and "Hello" becomes the first argument
-say.call( user, "Hello" ); // John: Hello    user라는 object에 say라는 function을 넣고 argument인 "hello"를 넣고 실행.
+say.call( user, "Hello" ); // John: Hello     user라는 object에 say라는 function을 넣고 argument에 "hello"를 넣고 실행.
 
 //3
 let worker = {                 // Object
@@ -251,7 +251,7 @@ console.log( worker.slow(2) ); // works, doesn't call the original (cached)  // 
 */
 
 
-/* arguments and apply
+/* 99. arguments and apply
 // 1 
 function say(time, phrase) {
   // console.log(arguments); // scope가 구성될 때, 자동으로 설정되는 이름 중 하나.// {0: Array[2]}
@@ -347,7 +347,7 @@ let user = {
   }
 };
 user.sayHi();  // Hello, Superman!
-setTimeout(user.sayHi, 1000); // setTimeout 주어가 Window. ==> Window.name // Hello, undefined!
+setTimeout(user.sayHi); // setTimeout 주어가 Window. ==> Window.name // Hello, undefined!
 setTimeout(user.sayHi, 1000); // 주어가 Window. ==> Window.name  // Hello, undefined!
 user.sayHi();  // Hello, Superman!
 

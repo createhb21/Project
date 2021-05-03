@@ -53,7 +53,7 @@ let shiftedHero = heroes.shift();  // 안쪽 끝에 element를 빼는 것
 console.log(heroes); // [ 'batman', 'x-man', 'aquaman' ]
 console.log(shiftedHero);  // superman
 
-heroes.unshift('ironman');
+heroes.unshift('ironman');  // 왼쪽 끝에 element를 추가하는 것
 console.log(heroes);  // [ 'ironman', 'batman', 'x-man', 'aquaman' ]
 */
 
@@ -380,7 +380,7 @@ console.log(names);  // [ 'Ironman', 'Birdman' ]
 
 
 console.log(highIncomeHeroes);
-console.log(highIncomeHeroes.length);
+console.log(highIncomeHeroes.length);   // 2
 */
 
 
@@ -542,7 +542,7 @@ let myList4 = [`Jupeter`, `Superman`, `Deadpool`, `Birdman`, `Wolverine`, `jupet
 
 // myList5.reverse();
 // console.log(myList5);  // [ 5, 4, 3, 2, 1 ]
-// myList4,    myList5 원본 자체가 통째로 바껴버려용~ => Transformation
+// myList4, myList5 원본 자체가 통째로 바껴버려용~ => Transformation
 // Transformation == trans(옮기다) + form(형태) + ation(동작) 
 // 원래의 있던 것들(원본)이 바꾸어버린다.
 
@@ -653,40 +653,40 @@ console.log(m.get(`age`));   // 2
 */
 
 
-//* 88 Map for loop
-// map을 만든 다음에 하나씩 하나씩 추가하는 방식 == Map Constructer 방식
-// const m = new Map();
-// m.set(`color`, `red`);
-// m.set(`age`, 2);
+/* 88 Map for loop
+map을 만든 다음에 하나씩 하나씩 추가하는 방식 == Map Constructer 방식
+const m = new Map();
+m.set(`color`, `red`);
+m.set(`age`, 2);
 
-// console.log(m);  // Map(2) { 'color' => 'red', 'age' => 2 }
+console.log(m);  // Map(2) { 'color' => 'red', 'age' => 2 }
 // 0: {"color" => "red"}
 //   key: "color"
 //   value: "red"
-//1: {"age" => 2}
+// 1: {"age" => 2}
 //   key: "age"
 //   value: 2
 
-// console.log(m.get(`color`)); // red
-// console.log(m.get(`age`));  // 2
+console.log(m.get(`color`)); // red
+console.log(m.get(`age`));  // 2
 
-// // m.delete(`color`);
+// m.delete(`color`);
 
-// // console.log(m);  // Map(1) { 'age' => 2 }
+// console.log(m);  // Map(1) { 'age' => 2 }
 
-// // m.clear();
-// // console.log(m); // [] 텅 빈 상태로 바뀌게 됌.
+// m.clear();
+// console.log(m); // [] 텅 빈 상태로 바뀌게 됌.
 
-// console.log(m.has(`color`));  // true
-// console.log(m.size);  // 2
+console.log(m.has(`color`));  // true
+console.log(m.size);  // 2
 
 
-/* 89 - Map - keys( ), values( ), entries( )
+//* 89 - Map - keys( ), values( ), entries( )
 // Map Literal
 const m = new Map([[`color`, `red`], [`owner`, `Flavio`], [`age`, 2]])
-// Map은 key, value/ key, value 로 구성되고있음.
+Map은 key, value/ key, value 로 구성되고있음.
 
-// console.log(m); // Map(3) { 'color' => 'red', 'owner' => 'Flavio', 'age' => 2 }
+console.log(m); // Map(3) { 'color' => 'red', 'owner' => 'Flavio', 'age' => 2 }
 
 for (const k of m.keys()) {
   console.log(k)   // color, owner, age
@@ -838,7 +838,7 @@ console.log(keys.next().done);  // true
 
 // true
 
-// donne: false 는 다 아직 안둘러봤다는 뜻, 다 둘러봤으면 true.
+// done: false 는 다 아직 안둘러봤다는 뜻, 다 둘러봤으면 true.
 */
 
 /* 93. next() method = array, map, set

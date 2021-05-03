@@ -1,5 +1,5 @@
       /* loops: while and for
-      while (boolean expression == true or false => true일 경우 실해, false일 경우 실행x) {
+      while (boolean expression == true or false => true일 경우 실행, false일 경우 실행x) {
       }
       Boolean Expression => true를 쓸 떄 주의해야(끝없이, 무한히 반복되서 computer down.). true 값이 주어질 수 있는 조건식을 주어서 그 조건식을 만족할 떄 까지만 돌아가도록 해야함.
       while (true) {
@@ -212,11 +212,11 @@
 
       console.log(myMessage) // f myMessage() => function 자체를 화면에 보여달라는 것이다.
       console.log(myMessage()) // console.log 내에 또 console.log를 두는 행위임. 바람직하지 않다. => myMessage라는 function을 실행한 결과를 보여달라는 것.
-      console.log(console.log("Hi, I am your first function.")) 
+      // console.log(console.log("Hi, I am your first function."))와 같은것. 바람직 x 
       모든 function들은 반드시 return값을 가지게 된다.
       그럼 function myMessage() {
               console.log("Hi, I am your first function.")
-      }은 무엇은 return한 것인가..? 아무것도 return한 게 없다. 그러니까 실제로 return한 게 없이, 이럴 때는 undefined가 return된다고 본다. 어려운 개념이니까 function은 다 return한다고만 기억
+           } // 은 무엇은 return한 것인가..? 아무것도 return한 게 없다. 그러니까 실제로 return한 게 없이, 이럴 때는 undefined가 return된다고 본다. 어려운 개념이니까 function은 다 return한다고만 기억
 
       function myMessage() {
         return "Hi, I am Jupeter"
@@ -252,7 +252,7 @@
           console.log(hero3); // Ironman
         }
 
-        students(); // undefined
+        students(); // students를 실행해서 hero4, student, hero3이 콘솔에 출력됌
       }
 
       console.log(hero1);  // Jupeter  // 1
@@ -359,7 +359,7 @@
 
       /*
       25. First Order Function => function을 argument로 받거나 혹은 function 자체를 return하는 function.
-      function myFn2(arg1) {
+      function myFn2(arg) {
         let result = arg * 2;
         return function myFn1(result) {
           return result + 10;
@@ -473,68 +473,68 @@
 
       
       /* 29. Object
-      // primitive types --> integer, string, boolean ... 
-      // stuructured types --> object, array, tuples ... 
+      primitive types --> integer, string, boolean ... 
+      stuructured types --> object, array, tuples ... 
 
-      // let myObject = new Object(); // constructor == con(함께) + struct(구조) + or(행위자 또는 행위 주체) 
+      let myObject = new Object(); // constructor == con(함께) + struct(구조) + or(행위자 또는 행위 주체) 
 
-      // console.log(myObject);  // {}
+      console.log(myObject);  // {}
 
-      // let heroes = {};
-      // console.log(heroes);   // {}
+      let heroes = {};
+      console.log(heroes);   // {}
 
       // key: value
-      // let heroes = {     // 변수들을 묶어 놓은 것이 Object다.
-      //   name: "Superman",
-      //   age: 33,
-      //   address: "제주시 한경면 판포리",
-      // };
+      let heroes = {     // 변수들을 묶어 놓은 것이 Object다.
+        name: "Superman",
+        age: 33,
+        address: "제주시 한경면 판포리",
+      };
 
-      // console.log(heroes.name);   // Superman
-      // console.log(heroes.age);   // 33
-      // console.log(heroes.address);   // 제주시 한경면 판포리
+      console.log(heroes.name);   // Superman
+      console.log(heroes.age);   // 33
+      console.log(heroes.address);   // 제주시 한경면 판포리
 
-      // let heroes = {     // 변수들을 묶어 놓은 것이 Object다.
-      //   // property = key + value
-      //   name: "Superman",
-      //   age: 33,
-      //   "current address": "제주시 한경면 판포리",   // 이렇게 사용할 순 있지만, 바람직하지 않다.
-      // };
+      let heroes = {     // 변수들을 묶어 놓은 것이 Object다.
+        // property = key + value
+        name: "Superman",
+        age: 33,
+        "current address": "제주시 한경면 판포리",   // 이렇게 사용할 순 있지만, 바람직하지 않다.
+      };
 
-      // console.log(heroes.name);   // Superman
-      // console.log(heroes.age);   // 33
-      // console.log(heroes["current address"]);   // 바람직 하지 않음. 카멜케이스를 활용하는 것이 바람직하다.
+      console.log(heroes.name);   // Superman
+      console.log(heroes.age);   // 33
+      console.log(heroes["current address"]);   // 바람직 하지 않음. 카멜케이스를 활용하는 것이 바람직하다.
 
 
-      // let heroes = {     // 변수들을 묶어 놓은 것이 Object다.
-      //   // property = key + value
-      //   firstName: "Superman",
-      //   age: 33,
-      //   currentAddress: "제주시 한경면 판포리",   
-      // };
+      let heroes = {     // 변수들을 묶어 놓은 것이 Object다.
+        // property = key + value
+        firstName: "Superman",
+        age: 33,
+        currentAddress: "제주시 한경면 판포리",   
+      };
 
-      // let newKey = "sex";      // don't do that
-      // heroes[newKey] = "male";   //이런식으로 newKey라는 Object에 property를 추가가능, key = "sex", value="male" // don't do that
+      let newKey = "sex";      // don't do that
+      heroes[newKey] = "male";   //이런식으로 newKey라는 Object에 property를 추가가능, key = "sex", value="male" // don't do that
 
-      // // 혹은 다음과 같은 형식으로도 property를 추가할 수 있음.
-      // heroes["sex"] = "male"; 
+      // 혹은 다음과 같은 형식으로 property를 추가할 수 있음.
+      heroes["sex"] = "male"; 
 
-      // console.log(heroes);
+      console.log(heroes);
 
-      // console.log(heroes.firstName);   // Superman
-      // console.log(heroes.age);   // 33
-      // console.log(heroes.currentAddress);   // 제주시 한경면 판포리
-      // console.log(heroes.sex);   // male
+      console.log(heroes.firstName);   // Superman
+      console.log(heroes.age);   // 33
+      console.log(heroes.currentAddress);   // 제주시 한경면 판포리
+      console.log(heroes.sex);   // male
 
-      // function makeHeroes(name, age, address) {
-      //   return {
-      //     heroName: name,
-      //     heroAge: age,
-      //     heroAddress: address,
-      //   }
-      // }
-      // let newHero = makeHeroes("Batman", 23, "제주시 한경면 판포리");
-      // console.log(newHero);    //  { heroName: 'Batman', heroAge: 23, heroAddress: '제주시 한경면 판포리' }
+      function makeHeroes(name, age, address) {
+        return {
+          heroName: name,
+          heroAge: age,
+          heroAddress: address,
+        }
+      }
+      let newHero = makeHeroes("Batman", 23, "제주시 한경면 판포리");
+      console.log(newHero);    //  { heroName: 'Batman', heroAge: 23, heroAddress: '제주시 한경면 판포리' }
 
       // Constructor finction   -> Object는 structure data type(구조를 가지고 있는 데이터타입)이니까, 구조를 가지고 있는 데이터타입을 만들어 내는 function이다. 이말임.
       function makeHeroes(name, age, address) {
@@ -619,73 +619,78 @@
         student2[key] = student1[key];
       }
 
+      console.log(student2); // {name: "Superman", study: "Javascript"}
+
       student2.name = "Birdman";
 
-      console.log(student1.name);
-      console.log(student2.name);
+      console.log(student1.name);   // Superman
+      console.log(student2.name);   // Birdman
       */
 
 
-      //* 35. Object assign
-      // let student1 = {
-      //   name: "Superman",
-      //   study: "Javascript"
-      // }
+      /* 35. Object assign
+      let student1 = {
+        name: "Superman",
+        study: "Javascript"
+      }
 
-      // let student2 = {};
+      let student2 = {};
 
-      // Object.assign(student2, student1);
+      Object.assign(student2, student1);
 
-      // console.log(student1.name);      // Superman
-      // console.log(student1.name);      // Superman 
+      console.log(student1.name);      // Superman
+      console.log(student1.name);      // Superman 
 
-      // let student1 = {
-      //   name: "Superman",
-      //   study: {
-      //     field: "JavaScript",
-      //     year: 3 
-      //   } 
-      // }
+      let student1 = {
+        name: "Superman",
+        study: {
+          field: "JavaScript",
+          year: 3 
+        } 
+      }
 
-      // let student2 = {
-      //   name: "Ironman",
-      //   study: {
-      //     field: ""
-      //   },
-      // };
-      // // console.log(student2.name);
+      let student2 = {
+        name: "Ironman",
+        study: {
+          field: ""
+        },
+      };
+      // console.log(student2.name);
 
-      // Object.assign(student2, student1); 
+      Object.assign(student2, student1); 
 
-      // student2.name = "Birdman";
-      // student2.study.field = "Haskell";
+      // console.log(student1.name);  // Superman
+      // console.log(student2.name);  // Superman
 
-      // // console.log(student1.name);  // Superman
-      // // console.log(student2.name);  // Birdman
-      // console.log(student2.study);  // { field: 'Haskell', year: 3 }
-      // console.log(student1.study);  //  { field: 'Haskell', year: 3 }
-      // console.log(student2.study.field);  // Hakell 
-      // console.log(student2.study.year);  // 3
-
-      
-      // let student1 = {
-      //   name: "Superman",
-      //   study: "Javascript"
-      // }
-
-      // let student2 = {
-      //   name: "Ironman",
-      //   study: ""
-      // };
-      // console.log(student2.name);  // Ironman
-
-      // Object.assign(student2, student1);
-
-      // student2.name = "Birdman";
+      student2.name = "Birdman";
+      student2.study.field = "Haskell";
 
       // console.log(student1.name);  // Superman
       // console.log(student2.name);  // Birdman
-      // console.log(student2.study);  // Javascript 
+      console.log(student2.study);  // { field: 'Haskell', year: 3 }
+      console.log(student1.study);  //  { field: 'Haskell', year: 3 }
+      console.log(student2.study.field);  // Hakell 
+      console.log(student2.study.year);  // 3
+
+      
+      let student1 = {
+        name: "Superman",
+        study: "Javascript"
+      }
+
+      let student2 = {
+        name: "Ironman",
+        study: ""
+      };
+      console.log(student2.name);  // Ironman
+
+      Object.assign(student2, student1);
+
+      student2.name = "Birdman";
+
+      console.log(student1.name);  // Superman
+      console.log(student2.name);  // Birdman
+      console.log(student2.study);  // Javascript 
       // */
 
 
@@ -720,7 +725,7 @@
       // console.log(student2.name);
       console.log(student2.study);  // {field: "Haskell", year: 3}
       console.log(student1.study);  // {field: "Haskell", year: 3}
-      console.log(student1.name); // Superman
+      console.log(student1.name); // Superman 
       
       // Deep Cloning -> Object 속에 있는 Object도 복사할 때 완전히 새로운 Object가 만들어지게 하는..
       // */
@@ -741,7 +746,7 @@
       */
 
 
-      //*
+      /*
       // 38. Object method - this
       let superman = {
         name: 'Superman',
@@ -762,11 +767,11 @@
       // console.log(superman.name); // Superman
 
       // 여기서 this가 무엇인 지 결정난다.
-      // superman.skill();   // I am Superman, I can fly!  // this.name == superman.name 
-      // superman.skill();  // Dot notation = 점 앞에 있는 무엇(object)가 주어, 점 뒤에 있는 무엇(function)이 동사.
+      superman.skill();   // I am Superman, I can fly!  // this.name == superman.name 
+      superman.skill();  // Dot notation = 점 앞에 있는 무엇(object)가 주어, 점 뒤에 있는 무엇(function)이 동사.
 
-      // function skill() {
-      //     console.log(`I am ${this.name}, I can fly!`)}
+      function skill() {
+          console.log(`I am ${this.name}, I can fly!`)}
 
       // top level function declaration
       function study() {
