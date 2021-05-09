@@ -252,3 +252,344 @@ console.log(person)
 person = {name: "Jupeter"}
 console.log(person)
 */
+
+/* function declaration 
+// function functionName(parameters) {
+//   // code to be executed
+// }
+
+function myFunction(a, b) { // declare
+  return a * b
+}
+
+// let a = myFunction(3, 4) // invoke, call
+// console.log(a)
+
+// function expression,
+//  term = expression
+// all expressions in JS are evaluated before assignment. 
+// Evaluation means that JS reads words and calculate their values. 
+// 
+var x = function (a, b) {return a * b} //anonymous function
+var y = "Jupeter" //anonymous function
+
+console.log(y)
+
+
+
+var z = x(4, 3) // call and assign
+
+// console.log(z)
+
+
+// // Self-Invoking Functions
+// (function () {
+//   let x = "Hello!!";      // I will invoke myself
+// })();
+
+// // Functions Can Be Used as Values
+// function myFunction(a, b) {
+//   return a * b;
+// }
+
+// let x = myFunction(4, 3);
+// let x = myFunction(4, 3) * 2;
+
+
+// // Functions are Objects
+// function myFunction(a, b) {
+//   return a * b;
+// }
+
+// let txt = myFunction.toString();
+
+// // ES5
+// let x = function(x, y) {
+//   return x * y;
+// }
+
+// // ES6
+// const x = (x, y) => x * y;
+// const x = (x, y) => { return x * y };
+*/
+
+
+/* Functions Can Be Used as Values
+function myFunction(a, b) {
+  return a * b
+}
+
+let x = myFunction(4, 3)
+let x = myFunction(4, 3) * 2
+
+// value and object
+// primitive data types are not object: 1, 2, 3, ...."Jupeter", true or false, symbol
+// structured data types: object and array
+// functions
+
+// Functions are Objects
+function myFunction(a, b) {
+  return a * b
+}
+
+let txt = myFunction.toString()
+
+// ES5
+let x = function(x, y) {
+  return x * y
+}
+
+// ES6
+const x = (x, y) => x * y
+const x = (x, y) => { return x * y };
+*/
+
+/* function functionName(parameter1, parameter2, parameter3) {
+    // code to be executed
+}
+
+
+// Parameter Defaults
+function myFunction(x, y) { // declaration
+    if (y === undefined) {
+        y = 0;
+    }
+    return x + y
+}
+
+console.log(myFunction(3, 4))
+console.log(myFunction(3))
+console.log(myFunction(3, 4, 5))
+
+function myFn(a = 1, b = 1) {
+  return a * b + 5
+}
+
+console.log(myFn(3))
+console.log(myFn(3, 5))
+console.log(myFn())
+
+// The Arguments Object
+x = findMax(1, 123, 500, 115, 44, 88);
+
+function findMax() {
+    var i;
+    var max = -Infinity;
+    for (i = 0; i < arguments.length; i++) {
+        if (arguments[i] > max) {
+            max = arguments[i];
+        }
+    }
+    console.log(max)
+    // return max;
+}
+
+let x = findMax(1, 123, 500, 115, 44, 88);
+
+function findMax() {
+    console.log(arguments)
+}
+
+
+// parameter and arguments
+
+function myFn(a, b) { // a, b are parameters. abstract
+  return a + b
+}
+
+myFn(3, 4) // 3, 4 are arguments. concrete
+
+let x = sumAll(1, 123, 500, 115, 44, 88);
+
+function sumAll() {
+    let i;
+    let sum = 0;
+    for (i = 0; i < arguments.length; i++) {
+        sum += arguments[i];
+    }
+    return sum;
+}
+console.log(x)
+*/
+
+
+
+/* 
+// // // Passed by Value
+let x = 3
+console.log(x)    // 3
+
+function changeNum(a) {
+  a = a * 3
+  return a
+}
+
+console.log(changeNum(x)) // 9
+console.log(x)   // 3 or 9 ??? -> 3
+
+
+// // // Passed by Reference
+
+let x = {
+  name: "Jupeter",
+  major: "JS",
+  members: 42,
+}
+
+console.log(x)    // 3
+
+function changeNum(a) {
+  a.name = "Superman"
+  return a
+}
+
+console.log(changeName(x)) // {name: "Superman", major: "JS", members: 42}
+console.log(x)   // Jupeter or Superman ????  {name: "Superman", major: "JS", members: 42}
+*/
+
+
+/* Recursion and stack
+// https://javascript.info/recursion
+
+// Two ways of thinking
+pow(2, 2) = 4
+pow(2, 3) = 8
+pow(2, 4) = 16
+
+
+// iterative
+function pow(x, n) {
+  let result = 1;
+
+  // multiply result by x n times in the loop
+  for (let i = 0; i < n; i++) {
+      result *= x;
+  }
+
+  return result;
+}
+
+console.log(pow(2, 3)); // 8
+
+// Recursive
+function pow(x, n) {
+  if (n == 1) {
+      return x;
+  } else {
+      return x * pow(x, n - 1);
+  }
+}
+
+console.log(pow(2, 3)); // 8
+
+
+pow(2, 4) = 2 * pow(2, 3)
+pow(2, 3) = 2 * pow(2, 2)
+pow(2, 2) = 2 * pow(2, 1)
+pow(2, 1) = 2
+
+// ternary operator
+function pow(x, n) {
+  return (n == 1) ? x : (x * pow(x, n - 1));
+}
+
+// Haskell
+
+// The execution stack
+*/
+
+
+/* The execution stack = context = environment
+function pow(x, n) {
+  if (n == 1) {
+      return x;
+  } else {
+      return x * pow(x, n - 1);
+  }
+}
+
+console.log(pow(2, 3));
+
+// 3. call pow(2, 1) ==> Context: { x: 2, n: 1 }
+// 2. call pow(2, 2) ==> Context: { x: 2, n: 2, at line 6 }
+// 1. call pow(2, 3) ==> Context: { x: 2, n: 3, at line 2 }
+
+
+// one function makes one execution stack
+*/
+
+/* Recursive traversals
+function pow(x, n) { // only one execution stack is made. 
+  let result = 1;
+
+  // multiply result by x n times in the loop
+  for (let i = 0; i < n; i++) {
+      result *= x;
+  }
+
+  return result;
+}
+
+alert(pow(2, 3)); // 8
+
+let company = { // the same object, compressed for brevity
+  sales: [{ name: 'John', salary: 1000 }, { name: 'Alice', salary: 600 }],
+  development: {
+      sites: [{ name: 'Peter', salary: 2000 }, { name: 'Alex', salary: 1800 }],
+      internals: [{ name: 'Jack', salary: 1300 }]
+  }
+};
+
+// The function to do the job
+function sumSalaries(department) {
+  if (Array.isArray(department)) { // case (1)
+      return department.reduce((prev, current) => prev + current.salary, 0); // sum the array
+  } else { // case (2)
+      let sum = 0;
+      for (let subdep of Object.values(department)) {
+          sum += sumSalaries(subdep); // recursively call for subdepartments, sum the results
+      }
+      return sum;
+  }
+}
+
+alert(sumSalaries(company)); // 6700
+*/
+
+/* JS 72 - Recursive structures
+// Linked list
+let arr = [obj2, obj2_1, obj3, obj1000];
+// pop, push, shift, unshift
+
+let list = {
+    value: 1,
+    next: {
+        value: 2,
+        next: {
+            value: 3,
+            next: {
+                value: 4,
+                next: null
+            }
+        }
+    }
+};
+
+console.log(list)   // {value: 1, next: {value: 2, next: {value: 3, next: {value: 4}}}}
+
+let list = { value: 1 };
+list.next = { value: 2 };
+list.next.next = { value: 3 };
+list.next.next.next = { value: 4 };
+
+console.log(list)  // {value: 1, next: {value: 2, next: {value: 3, next: {value: 4}}}}
+
+let secondList = list.next.next;
+list.next.next = null;
+console.log(secondList)    // {value: 3, next: {value: 4}}
+console.log(list)   // {value: 1, next: {value: 2, next: null}}
+
+// prepend the new value to the list
+list = { value: "new item", next: list };
+console.log(list)   // {value: "new item", next: {value: 1, next: {value: 2, next: null}}}
+*/
