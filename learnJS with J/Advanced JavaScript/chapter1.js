@@ -145,7 +145,7 @@ function myFn() {
 }
 
 console.log(myFn()) // call a function => 42
- 
+
 
 let person = { firstName: "John", lastName: "Doe", age: 50, eyeColor: "blue" }
 
@@ -277,7 +277,7 @@ console.log(y)
 
 
 
-var z = x(4, 3) // call and assign
+var z = x(4, 3) // call and assign  
 
 // console.log(z)
 
@@ -531,7 +531,7 @@ function pow(x, n) { // only one execution stack is made.
 }
 
 alert(pow(2, 3)); // 8
-
+ 
 let company = { // the same object, compressed for brevity
   sales: [{ name: 'John', salary: 1000 }, { name: 'Alice', salary: 600 }],
   development: {
@@ -592,4 +592,502 @@ console.log(list)   // {value: 1, next: {value: 2, next: null}}
 // prepend the new value to the list
 list = { value: "new item", next: list };
 console.log(list)   // {value: "new item", next: {value: 1, next: {value: 2, next: null}}}
+*/
+
+
+/* Exercise
+
+// Write a function sumTo(n) that calculates the sum of numbers 1 + 2 + ... + n.
+
+// sumTo(1) = 1
+// sumTo(2) = 2 + 1 = 3
+// sumTo(3) = 3 + 2 + 1 = 6
+// sumTo(4) = 4 + 3 + 2 + 1 = 10
+// ...
+// sumTo(100) = 100 + 99 + ... + 2 + 1 = 5050
+
+// 1. Using a for loop. Iteration
+// 2. Using a recursion, cause sumTo(n) = n + sumTo(n-1) for n > 1.
+// 3. Using the arithmetic progression formula.
+
+function sumTo(n) {  }
+
+alert( sumTo(10000) ); // 5050
+
+
+
+
+Calculate factorial
+n! = n * (n - 1) * (n - 2) * ...*1
+1! = 1
+2! = 2 * 1 = 2
+3! = 3 * 2 * 1 = 6
+4! = 4 * 3 * 2 * 1 = 24
+5! = 5 * 4 * 3 * 2 * 1 = 120
+
+factorial(5) //120
+
+function factorial1() { // Iteration
+    
+}
+function factorial2() { // Recursion
+    
+}
+
+
+// Fibonacci numbers
+
+// Fn = Fn-1 + Fn-2
+
+function fib(n) { }
+
+alert(fib(3)); // 2
+alert(fib(7)); // 13
+alert(fib(77)); // 5527939700884757
+
+
+// Output a single-linked list
+
+let list = {
+    value: 1,
+    next: {
+        value: 2,
+        next: {
+            value: 3,
+            next: {
+                value: 4,
+                next: null
+            }
+        }
+    }
+};
+
+printList(list)
+
+function printList_1() { //Iteration
+    
+}
+
+function printList_2() { //Recursion
+    
+}
+
+
+// Output a single-linked list in the reverse order
+
+let list = {
+    value: 1,
+    next: {
+        value: 2,
+        next: {
+            value: 3,
+            next: {
+                value: 4,
+                next: null
+            }
+        }
+    }
+};
+
+printList(list)
+
+function printList_1() { //Iteration
+    
+}
+
+function printList_2() { //Recursion
+    
+}
+
+*/
+
+/* JS 78 - Rest parameters
+
+// https://javascript.info/rest-parameters-spread-operator
+// Math.max(arg1, arg2, ..., argN) – returns the greatest of the arguments.
+// Object.assign(dest, src1, ..., srcN) – copies properties from src1..N into dest.
+// …and so on.
+
+function sum(a, b) {
+  return a + b;
+}
+
+alert( sum(1, 2, 3, 4, 5) );
+
+function sumAll(...args) { // args is the name for the array
+  let sum = 0;
+
+  for (let arg of args) sum += arg;
+
+  return sum;
+}
+
+alert( sumAll(1) ); // 1
+alert( sumAll(1, 2) ); // 3
+alert( sumAll(1, 2, 3) ); // 6
+
+
+function showName(firstName, lastName, ...titles) {   // ...titles is an array.
+  console.log(firstName + ' ' + lastName); // Julius Caesar
+
+  // the rest go into titles array
+  // i.e. titles = ["Consul", "Imperator"]
+  console.log(titles[0]); // Consul
+  console.log(titles[1]); // Imperator
+  console.log(titles.length); // 2
+}
+
+showName("Julius", "Caesar", "Consul", "Imperator");
+
+
+function showName() {  // arguments is a keyword of JS. and similar to array, but not. .
+  console.log( arguments.length );
+  console.log( arguments[0] );
+  console.log( arguments[1] );
+
+  // it's iterable
+  // for(let arg of arguments) alert(arg);
+}
+
+// shows: 2, Julius, Caesar
+showName("Julius", "Caesar");
+
+// shows: 1, Ilya, undefined (no second argument)
+showName("Ilya");
+
+
+function f() {
+  let showArg = () => console.log(arguments[0]);
+  showArg();
+}
+
+f(1); // 1
+
+f(2, 3); // 2
+
+// "this" keyword of an arrow function denotes its surrounding context(= execution stack). 
+*/
+
+/* JS 78 - Spread operator
+
+let arr = [3, 5, 1];
+
+console.log( Math.max(arr) ); // null
+
+let arr = [3, 5, 1];
+
+console.log( Math.max(3, 5, 1) ) // 5
+
+
+let arr = [3, 5, 1];
+
+console.log( Math.max(...arr) ); // 5
+
+
+let arr1 = [1, -2, 3, 4];
+let arr2 = [8, 3, -8, 1];
+
+console.log( Math.max(...arr1, ...arr2) ); // 8
+
+let merged = [0, ...arr1, 2, ...arr2];
+console.log(merged)   // [0, 1, -2, 3, 4, 2, 8, 3, -8, 1]
+
+
+let merged = Math.max(0, ...arr1, 2, ...arr2);
+console.log(merged)  // 8
+
+
+let str = "Hello";   // string is an array of characters. 
+
+console.log( [...str] ); // ["H", "e", "l", "l", "o"]
+console.log( Array.from(str));  //  ["H", "e", "l", "l", "o"]
+*/
+
+/* JS 79 - learning closure
+
+// https://javascript.info/closure
+
+// Closure
+let name = "John"; // binding means establishing a relation between a name an a value. 
+
+function sayHi() {  // Declaration
+  console.log("Hi, " + name);
+}
+
+name = "Ju Peter";
+
+sayHi(); // what will it show: "John" or "Peter"?    === Invoking, calling, executing a function.
+
+
+function makeWorker() {
+  let name = "Peter";
+
+  return function() {
+    console.log(name);
+  };
+}
+
+let name = "John";
+
+// create a function
+let work = makeWorker();
+
+// call it
+work(); // what will it show? "Peter" (name where created) or "John" (name where called)? -> Peter
+
+*/
+
+/* JS 80 - Parsing
+
+// Lexical Environment is similar to execution stack(= context) of a function
+// statement and expression . 
+// let, const, function, class  are declarations. 
+
+let name = "John";
+
+function sayHi() {
+  console.log("Hi, " + name);
+}
+
+name = "Peter"; // (*)
+
+sayHi(); // Peter
+
+// one function call makes one execution stack .
+//  JS engine first makes a global context.
+// Engine collects bindings(=declarations) in its direct scope. 
+// Engine makes LE of the global ==> name, sayHi : parsing
+// Parsing is to make global lexical environment. 
+// Engine again makes LE and [[environment]] of each function or block. 
+
+const list = {lexicalEnvironment: '', [[environment]]: {lexicalEnvironment:'', [[environment]]:{}}} 
+
+*/
+
+/* JS 82 - Lexical Environment들의 계층 구조
+// Nested functions => function이 function을 포함
+function sayHiBye(firstName, lastName) {
+
+  // helper nested function to use below
+  function getFullName() {
+    return firstName + " " + lastName;
+  }
+
+  console.log( "Hello, " + getFullName() );
+  console.log( "Bye, " + getFullName() );
+
+}
+
+// constructor function
+// constructor function returns a new object
+function User(name) {
+
+  // the object method is created as a nested function
+  this.sayHi = function() {
+    console.log(name);
+  };
+}
+
+let user = new User("John");
+user.sayHi(); // the method "sayHi" code has access to the outer "name"
+
+function makeCounter() {
+  let count = 0;
+
+  return function() {
+    console.log(count)
+    return count++; // has access to the outer counter
+  };
+}
+
+let counter = makeCounter();
+
+counter() // 0
+counter() // 1
+counter() // 2
+
+// any new function call makes a brand new LE of it. 
+
+// global LE: makeCounter, counter, [[Environment]]: null
+// makeCounter LE: count, [[Environment]]: global
+// counter LE: null,  [[Environment]]: makeCounter
+
+*/
+
+/* JS 83 - How Lexical Environments work
+function makeCounter() {
+  let count = 0;
+  return function() {
+    return count++;
+  };
+}
+
+let counter1 = makeCounter();
+let counter2 = makeCounter();
+
+counter1(); // 0
+counter1(); // 1
+counter1(); // 2
+counter1(); // 3
+
+
+counter2(); // 0 or 4?   -> 0
+*/
+
+/* JS 84 - Garbage collection
+// if, while, for makes its own LE.
+for (let i = 0; i < 10; i++) {
+  // Each loop has its own Lexical Environment
+  // {i: value}
+}
+
+console.log(i); // Error, no such variable
+
+//  Garbage collection
+
+function f() {
+  let value1 = 123;
+  let value2 = 456;
+}
+
+f();
+
+function f() {
+  let value1 = 123;
+  let value2 = 456;
+
+  setTimeout(() => console.log(value1), 1000)
+}
+
+f();
+
+
+function f() {
+  let value = 123;
+
+  return () => console.log(value); 
+}
+
+let g = f(); // g is reachable, and keeps the outer lexical environment in memory
+g(); // LE
+
+function f() {
+  let value = Math.random();
+
+  return function() { console.log(value); };
+}
+
+// 3 functions in array, every one of them links to Lexical Environment
+// from the corresponding f() run
+//         LE   LE   LE
+let arr = [f(), f(), f()];
+arr[0]()
+arr[1]()
+arr[2]()
+*/
+
+/* JS 85 - Exercise: Counter object
+
+// Counter Object 
+
+function Counter() {
+  let count = 0;
+
+  this.up = function() {
+    return ++count;
+  };
+  this.down = function() {
+    return --count;
+  };
+}
+
+let counter = new Counter();
+
+console.log( counter.up() ); // ?    1 
+console.log( counter.up() ); // ?    2
+console.log( counter.down() ); // ?   1
+
+// Function in if
+
+let phrase = "Hello";
+
+if (true) {
+  let user = "John";
+
+  function sayHi() {
+    console.log(`${phrase}, ${user}`);
+  }
+}
+
+sayHi();    // Hello, John
+
+
+// sum(a)(b) = a+b
+console.log(sum(1)(2)) // 3
+console.log(sum(5)(-1)) // 4
+
+function sum() {
+  
+}
+
+
+// Filter through function
+// .. your code for inBetween and inArray 
+let arr = [1, 2, 3, 4, 5, 6, 7];
+
+console.log( arr.filter(inBetween(3, 6)) ); // 3,4,5,6
+
+console.log( arr.filter(inArray([1, 2, 10])) ); // 1,2
+
+function inBetween(){
+    
+}
+function inArray(){
+    
+}
+
+
+// Sort by field
+let users = [
+  { name: "John", age: 20, surname: "Johnson" },
+  { name: "Pete", age: 18, surname: "Peterson" },
+  { name: "Ann", age: 19, surname: "Hathaway" }
+];
+
+// by name (Ann, John, Pete)
+users.sort((a, b) => a.name > b.name ? 1 : -1);
+
+// by age (Pete, Ann, John)
+users.sort((a, b) => a.age > b.age ? 1 : -1);
+
+
+users.sort(byField('name'));
+users.sort(byField('age'));
+
+function byField() {
+  
+}
+
+
+// Army of functions
+function makeArmy() {
+  let shooters = [];
+
+  let i = 0;
+  while (i < 10) {
+    let shooter = function() { // shooter function
+      console.log( i ); // should show its number
+    };
+    shooters.push(shooter);
+    i++;
+  }
+
+  return shooters;
+}
+
+let army = makeArmy();
+
+army[0](); // the shooter number 0 shows 10
+army[5](); // and number 5 also outputs 10...
+// ... all shooters show 10 instead of their 0, 1, 2, 3...
 */

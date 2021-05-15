@@ -445,7 +445,7 @@
 
       /*
       28. Javascript Specials
-      // Aroow function
+      // Arrow function
       console.log(myFn1(5)); // 6 불러서 쓸 수 있음.
       console.log(myFn2(5));  // error (expression이라서) 미리 위에서 쓸 수 없음.
 
@@ -536,7 +536,7 @@
       let newHero = makeHeroes("Batman", 23, "제주시 한경면 판포리");
       console.log(newHero);    //  { heroName: 'Batman', heroAge: 23, heroAddress: '제주시 한경면 판포리' }
 
-      // Constructor finction   -> Object는 structure data type(구조를 가지고 있는 데이터타입)이니까, 구조를 가지고 있는 데이터타입을 만들어 내는 function이다. 이말임.
+      // Constructor function   -> Object는 structure data type(구조를 가지고 있는 데이터타입)이니까, 구조를 가지고 있는 데이터타입을 만들어 내는 function이다. 이말임.
       function makeHeroes(name, age, address) {
         return {
           name,     // == name: name,
@@ -560,7 +560,7 @@
       };
 
       for(let code in codes) {   // code 에는 아무 단어나 넣어도 된다. 왜냐하면 어떤 단어를 넣든간에 무조건 property의 key를 받아들이도록 되있음.
-        console.log(code); // 1, 41, 44, 49   / string인데도 자동으로 숫자로 변환해서 숫자의 순서대로 표시를 한다.
+        console.log(code); // 1, 41, 44, 49   / string인데도 자동으로 숫자로 변환해서 숫자의 순서대로 표시  를 한다.
       }
 
       let codes1 = {
@@ -748,8 +748,8 @@
 
       /*
       // 38. Object method - this
-      let superman = {
-        name: 'Superman',
+      let rsuperman = {
+        name: 'Supeman',
         age: 30,
         skill: function() {   // 여기서는 this가 무엇인지 모른다. 다만 짐작할 수 있다.
           console.log(`I am ${this.name}, I can fly!`)}

@@ -65,8 +65,7 @@ set1.add("GFG");
 // Declaring a call back function 
 // we are using only one parameter value 
 // so it will ignore other two . 
-function printOne(values) 
-{ 
+function printOne(values) { 
     console.log(values); 
 } 
 
@@ -79,8 +78,7 @@ set1.forEach(printOne);  // {Firstname: "Sumit", Lastname: "Ghosh"}, 50, 30, 40,
 // Declaring a call back function 
 // we are using two parameter value 
 // so it will ignore last one  
-function printTwo(key, values) 
-{ 
+function printTwo(key, values) { 
     console.log(key+" "+values); 
 } 
   
@@ -244,7 +242,7 @@ function cachingDecorator(func) {             // Function
 }
 
 worker.slow = cachingDecorator(worker.slow); // now make it caching  
-// function cachingDecorator이 worker.slow에 들어감 -> function(x)이 들어가는 자리는 정확히 worker object의 slow라고 하는 key에 담기게 된다. slow라고 하는 key가  function(x)을 가리케기 되는 것. 그럼 이 function(x)의 주어는 누구인가? 바로 worker이다. 이 function(x)의 주어가 worker라는 것을 알려주는 것이 바로 this. 주어와 동사를 어울리게 해주는 방식이 func.call(this, x); 
+// function cachingDecorator이 worker.slow에 들어감 -> function(x)이 들어가는 자리는 정확히 worker object의 slow라고 하는 key에 담기게 된다. slow라고 하는 key가  function(x)을 가리키게 되는 것. 그럼 이 function(x)의 주어는 누구인가? 바로 worker이다. 이 function(x)의 주어가 worker라는 것을 알려주는 것이 바로 this. 주어와 동사를 어울리게 해주는 방식이 func.call(this, x); 
 
 console.log( worker.slow(2) ); // works     // Called with 2, 6
 console.log( worker.slow(2) ); // works, doesn't call the original (cached)  // 6

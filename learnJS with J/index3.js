@@ -109,6 +109,11 @@ console.log(rest);  // [ 'Birdman', 'Catgirl', 'Wondergirl' ]
 console.log(rest[0]);  // Birdman
 console.log(rest[2]); // Wondergirl
 
+
+
+
+let heroes = [`Superman`, `Xman`, `Birdman`, `Catgirl`, `Wondergirl`];
+
 let [hero1, hero2, hero3, hero4, hero5, hero6 = `Jupeter`] = heroes;  // default value
 
 console.log(hero6);   // Jupeter
@@ -258,7 +263,7 @@ let text = `{ "employees" : [
   // Rest == 여럿을 하나로 전환
   function sum(first, ...rest) {
     console.log(...rest);  // 1     // 앞의 ... 은 하나의 array를 다시 풀어주는 것
-    console.log(rest);  // [ 2, 3, 4, 5 ]     // rest는 여러개의 argumnet를 하나의 arrat로 만들어줌 
+    console.log(rest);  // [ 2, 3, 4, 5 ]     // rest는 여러개의 argumnet를 하나의 array로 만들어줌 
     for (let i = 0; i < rest.length; i++) {
       first += rest[i];
     }
@@ -492,41 +497,41 @@ console.log( "Again: " + slowFn(2) ); // the same as the previous line
 
 
 //2
-// we'll make worker.slow caching
-// let worker = {
-//   someMethod() {
-//     return 3;
-//   },
+we'll make worker.slow caching
+let worker = {
+  someMethod() {
+    return 3;
+  },
 
-//   slow(x) {
-//     // actually, there can be a scary CPU-heavy task here
-//     console.log("Called with " + x);
-//     // return x * worker.someMethod(); // (*)
-//     return x * this.someMethod(); // (*)
-//     // return x * 5; // OK
-//   }
-// };
+  slow(x) {
+    // actually, there can be a scary CPU-heavy task here
+    console.log("Called with " + x);
+    // return x * worker.someMethod(); // (*)
+    return x * this.someMethod(); // (*)
+    // return x * 5; // OK
+  }
+};
 
 // // same code as before
-// function cachingDecorator(func) {
-//   let cache = new Map();
-//   return function (x) {
-//     if (cache.has(x)) {
-//       return cache.get(x);
-//     }
+function cachingDecorator(func) {
+  let cache = new Map();
+  return function (x) {
+    if (cache.has(x)) {
+      return cache.get(x);
+    }
 
 
-//     let result = func(x); // (**)
-//     cache.set(x, result);
-//     return result;
-//   }; 
-// }
+    let result = func(x); // (**)
+    cache.set(x, result);
+    return result;
+  }; 
+}
 
-// console.log(worker.slow(1)); // the original method works // Called with 1, 3
+console.log(worker.slow(1)); // the original method works // Called with 1, 3
 
-// worker.slow = cachingDecorator(worker.slow);
-// console.log(worker.slow(2)); // Whoops! Error: Cannot read property 'someMethod' of undefined
-// console.log(worker.slow(2)); 
+worker.slow = cachingDecorator(worker.slow);
+console.log(worker.slow(2)); // Whoops! Error: Cannot read property 'someMethod' of undefined
+console.log(worker.slow(2)); 
 //*/
 
 

@@ -82,7 +82,7 @@ for (let key in myObj) {
 
 // x
 // dot(.) notation(표기법) 이건 안되는데 브라켓으로 하는건 되는데, why?
-for (let key in myObj) {
+for (let key in myObj) { 
   console.log(myObj.key);
 } // 왜 myObj.key는 안되고 myObj[key]는 될까?
 
@@ -250,14 +250,14 @@ let heroes = [
 //   heroes.indexOf(birdman)
 // );  // -1
 
-// let foundHero = heroes.find(item => item.address == `Busan`);
-// // console.log(foundHero); // { name: 'Superman',
-// //                           tel: '010-2345-6789',
-// //                           pay: '$10/hr',
-// //                           address: 'Busan'
-// //                          }
-// console.log(foundHero.name);  // Superman
-// console.log(foundHero.pay);  // $10/hr
+let foundHero = heroes.find(item => item.address == `Busan`);
+// console.log(foundHero); // { name: 'Superman',
+//                           tel: '010-2345-6789',
+//                           pay: '$10/hr',
+//                           address: 'Busan'
+//                          }
+console.log(foundHero.name);  // Superman
+console.log(foundHero.pay);  // $10/hr
 
 
 let foundHero = heroes.find(item => item.pay == `$13/hr`)
@@ -569,7 +569,7 @@ console.log(anotherResult); // [`Jupeter`, `Superman`, `Deadpool`, `Birdman`, `W
 let myList6 = [1, 2, 3, 4, 5];
 
 let result = myList6.reduce((current, accumulator) => current + accumulator, 0)  // current == item 하나씩 하나씩 들어감, 0 == accumulator
-console.log(result);  // 15 === 1 + 2 + 3 + 4 + 5
+console.log(result);  // 15 === 1 + 2 + 3 + 4 + 5 
 
 // let result = myList6.reduce((current, accumulator) => current * accumulator, 0)
 // console.log(result);  // 0
@@ -681,7 +681,7 @@ console.log(m.has(`color`));  // true
 console.log(m.size);  // 2
 
 
-//* 89 - Map - keys( ), values( ), entries( )
+//* 89 - Map - keys( ), values( ), entries( )you
 // Map Literal
 const m = new Map([[`color`, `red`], [`owner`, `Flavio`], [`age`, 2]])
 Map은 key, value/ key, value 로 구성되고있음.

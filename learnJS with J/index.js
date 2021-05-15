@@ -230,7 +230,7 @@
 
     // confirm returns true or false.
     let isBoss = confirm("Are you the boss?");
-    alert(isBoss);
+    alert(isBoss);  // 확인 -> true.   취소   -> false
     */
 
 
